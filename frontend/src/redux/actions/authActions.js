@@ -7,7 +7,7 @@ import { LOGIN_SUCCESS, REGISTER_SUCCESS,LOGOUT } from '../types';
 export const loadUser = () => async (dispatch) => {
   try {
     const token = localStorage.getItem('token');
-    const res = await axios.get('http://localhost:5000/api/auth', {
+    const res = await axios.get('https://your-backend-url.onrender.com/api/auth', {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     dispatch({
@@ -22,7 +22,7 @@ export const loadUser = () => async (dispatch) => {
 
 export const loginUser = (userData, navigate) => async (dispatch) => {
   try {
-    const res = await axios.post('http://localhost:5000/api/auth/login', userData);
+    const res = await axios.post('https://check-49cs.onrender.com/api/auth/login', userData);
     localStorage.setItem('token', res.data.token); // Store token in localStorage
     dispatch({
       type: LOGIN_SUCCESS,
@@ -36,7 +36,7 @@ export const loginUser = (userData, navigate) => async (dispatch) => {
 
 export const registerUser = (userData, navigate) => async (dispatch) => {
   try {
-    const res = await axios.post('http://localhost:5000/api/auth/register', userData);
+    const res = await axios.post('https://check-49cs.onrender.com/api/auth/register', userData);
     localStorage.setItem('token', res.data.token); // Store token in localStorage
     dispatch({
       type: REGISTER_SUCCESS,

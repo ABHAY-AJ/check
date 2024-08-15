@@ -8,7 +8,7 @@ import {
 
 export const fetchInternships = () => async (dispatch) => {
   try {
-    const res = await axios.get('http://localhost:5000/api/internships');
+    const res = await axios.get('https://check-49cs.onrender.com/api/internships');
     dispatch({
       type: FETCH_INTERNSHIPS_SUCCESS,
       payload: res.data,
@@ -27,7 +27,7 @@ export const createInternship = (internshipData) => async (dispatch, getState) =
       }
     };
 
-    const res = await axios.post('http://localhost:5000/api/internships', internshipData, config);
+    const res = await axios.post('https://check-49cs.onrender.com/api/internships', internshipData, config);
     dispatch({
       type: CREATE_INTERNSHIP_SUCCESS,
       payload: res.data,
@@ -47,7 +47,7 @@ export const updateInternship = (id, updatedData) => async (dispatch, getState) 
       }
     };
 
-    const res = await axios.put(`http://localhost:5000/api/internships/${id}`, updatedData, config);
+    const res = await axios.put(`https://check-49cs.onrender.com/api/internships/${id}`, updatedData, config);
     dispatch({
       type: UPDATE_INTERNSHIP_SUCCESS,
       payload: res.data,
@@ -66,7 +66,7 @@ export const deleteInternship = (id) => async (dispatch, getState) => {
       }
     };
 
-    await axios.delete(`http://localhost:5000/api/internships/${id}`, config);
+    await axios.delete(`https://check-49cs.onrender.com/api/internships/${id}`, config);
     dispatch({
       type: DELETE_INTERNSHIP_SUCCESS,
       payload: id,

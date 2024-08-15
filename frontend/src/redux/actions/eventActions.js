@@ -5,7 +5,7 @@ import { getToken } from '../../utils/tokenUtils'; // Ensure you have a utility 
 // Fetch all events
 export const fetchEvents = () => async (dispatch) => {
   try {
-    const res = await axios.get('http://localhost:5000/api/events');
+    const res = await axios.get('https://check-49cs.onrender.com/api/events');
     dispatch({
       type: FETCH_EVENTS_SUCCESS,
       payload: res.data,
@@ -19,7 +19,7 @@ export const fetchEvents = () => async (dispatch) => {
 export const createEvent = (eventData) => async (dispatch) => {
   try {
     const token = getToken(); // Get the token
-    await axios.post('http://localhost:5000/api/events', eventData, {
+    await axios.post('https://check-49cs.onrender.com/api/events', eventData, {
       headers: {
         Authorization: `Bearer ${token}`, // Include the token in the headers
       },
@@ -34,7 +34,7 @@ export const createEvent = (eventData) => async (dispatch) => {
 export const updateEvent = (id, eventData) => async (dispatch) => {
   try {
     const token = getToken(); // Get the token
-    await axios.put(`http://localhost:5000/api/events/${id}`, eventData, {
+    await axios.put(`https://check-49cs.onrender.com/api/events/${id}`, eventData, {
       headers: {
         Authorization: `Bearer ${token}`, // Include the token in the headers
       },
@@ -49,7 +49,7 @@ export const updateEvent = (id, eventData) => async (dispatch) => {
 export const deleteEvent = (id) => async (dispatch) => {
   try {
     const token = getToken(); // Get the token
-    await axios.delete(`http://localhost:5000/api/events/${id}`, {
+    await axios.delete(`https://check-49cs.onrender.com/api/events/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`, // Include the token in the headers
       },
