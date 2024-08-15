@@ -7,7 +7,7 @@ import { LOGIN_SUCCESS, REGISTER_SUCCESS,LOGOUT } from '../types';
 export const loadUser = () => async (dispatch) => {
   try {
     const token = localStorage.getItem('token');
-    const res = await axios.get('https://your-backend-url.onrender.com/api/auth', {
+    const res = await axios.get('https://check-49cs.onrender.com/api/auth', {
       headers: { 'Authorization': `Bearer ${token}` }
     });
     dispatch({
