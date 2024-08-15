@@ -11,7 +11,11 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(loginUser({ email, password }, navigate));
+    dispatch(loginUser({ email, password }, navigate))
+      .catch((err) => {
+        // Optionally handle errors here if not handled in action
+        console.error(err);
+      });
   };
 
   return (

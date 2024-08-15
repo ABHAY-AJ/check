@@ -16,7 +16,11 @@ const Register = () => {
     if (password !== confirmPassword) {
       alert('Passwords do not match');
     } else {
-      dispatch(registerUser({ name, email, password }, navigate));
+      dispatch(registerUser({ name, email, password }, navigate))
+        .catch((err) => {
+          // Optionally handle errors here if not handled in action
+          console.error(err);
+        });
     }
   };
 
@@ -48,6 +52,7 @@ const Register = () => {
           <label>Password</label>
           <input
             type="password"
+            placeholder='password must be greater than 6 letters'
             className="form-control"
             value={password}
             onChange={(e) => setPassword(e.target.value)}

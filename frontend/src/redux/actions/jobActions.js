@@ -5,11 +5,11 @@ import {
   UPDATE_JOB_SUCCESS,
   DELETE_JOB_SUCCESS
 } from '../types';
-
+import CONFIG from '../backend_API/api';
 
 export const fetchJobs = () => async (dispatch) => {
   try {
-    const res = await axios.get('https://check-49cs.onrender.com/api/jobs');
+    const res = await axios.get(`${CONFIG.API_URL}/api/jobs`);
     dispatch({
       type: FETCH_JOBS_SUCCESS,
       payload: res.data,
@@ -29,7 +29,7 @@ export const createJob = (jobData) => async (dispatch, getState) => {
       }
     };
 
-    const res = await axios.post('https://check-49cs.onrender.com/api/jobs', jobData, config);
+    const res = await axios.post(`${CONFIG.API_URL}/api/jobs`, jobData, config);
     dispatch({
       type: CREATE_JOB_SUCCESS,
       payload: res.data,
@@ -49,7 +49,7 @@ export const updateJob = (id, updatedData) => async (dispatch, getState) => {
       }
     };
 
-    const res = await axios.put(`https://check-49cs.onrender.com/api/jobs/${id}`, updatedData, config);
+    const res = await axios.put(`${CONFIG.API_URL}/api/jobs/${id}`, updatedData, config);
     dispatch({
       type: UPDATE_JOB_SUCCESS,
       payload: res.data,
@@ -63,7 +63,7 @@ export const deleteJob = (id) => async (dispatch, getState) => {
   try {
     const { auth: { token } } = getState(); // Get token from Redux state or wherever it's stored
 
-    await axios.delete(`https://check-49cs.onrender.com/api/jobs/${id}`, {
+    await axios.delete(`${CONFIG.API_URL}/api/jobs/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

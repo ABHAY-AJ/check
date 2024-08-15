@@ -10,12 +10,21 @@ import Internships from './components/Internships/Internships';
 import Courses from './components/Courses/Courses';
 import ResumeBuilder from './components/ResumeBuilder/ResumeBuilder';
 import Navbar from './components/navbar/navbar';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { loadUser } from './redux/actions/authActions';
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
   return (
 
     <Router>
-    <div className="App">
+    <div className="App container">
       <Navbar/>
       
         <Routes>

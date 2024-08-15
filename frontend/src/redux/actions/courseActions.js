@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { FETCH_COURSES_SUCCESS } from '../types';
+import CONFIG from '../backend_API/api';
 
 // Fetch all courses
 export const fetchCourses = () => async (dispatch) => {
   try {
-    const res = await axios.get('https://check-49cs.onrender.com/api/courses');
+    const res = await axios.get(`${CONFIG.API_URL}/api/courses`);
     dispatch({
       type: FETCH_COURSES_SUCCESS,
       payload: res.data,
@@ -24,7 +25,7 @@ export const createCourse = (courseData) => async (dispatch, getState) => {
         Authorization: `Bearer ${auth.token}`,
       },
     };
-    await axios.post('https://check-49cs.onrender.com/api/courses', courseData, config);
+    await axios.post(`${CONFIG.API_URL}/api/courses`, courseData, config);
     dispatch(fetchCourses()); // Optionally, refetch courses after creation
   } catch (err) {
     console.error(err);
@@ -41,7 +42,7 @@ export const updateCourse = (courseId, courseData) => async (dispatch, getState)
         Authorization: `Bearer ${auth.token}`,
       },
     };
-    await axios.put(`https://check-49cs.onrender.com/api/courses/${courseId}`, courseData, config);
+    await axios.put(`${CONFIG.API_URL}/api/courses/${courseId}`, courseData, config);
     dispatch(fetchCourses()); // Optionally, refetch courses after update
   } catch (err) {
     console.error(err);
@@ -57,7 +58,7 @@ export const deleteCourse = (courseId) => async (dispatch, getState) => {
         Authorization: `Bearer ${auth.token}`,
       },
     };
-    await axios.delete(`https://check-49cs.onrender.com/api/courses/${courseId}`, config);
+    await axios.delete(`${CONFIG.API_URL}/api/courses/${courseId}`, config);
     dispatch(fetchCourses()); // Optionally, refetch courses after deletion
   } catch (err) {
     console.error(err);

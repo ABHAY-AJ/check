@@ -5,11 +5,12 @@ import {
   UPDATE_RESUME_SUCCESS,
   DELETE_RESUME_SUCCESS
 } from '../types';
+import CONFIG from '../backend_API/api';
 
 // Fetch Resume by User ID
 export const fetchResumeByUserId = (userId) => async (dispatch) => {
   try {
-    const res = await axios.get(`https://check-49cs.onrender.com/api/resume/${userId}`);
+    const res = await axios.get(`${CONFIG.API_URL}/api/resume/${userId}`);
     dispatch({
       type: FETCH_RESUME_SUCCESS,
       payload: res.data,
@@ -30,7 +31,7 @@ export const createResume = (resumeData) => async (dispatch, getState) => {
       }
     };
 
-    const res = await axios.post('https://check-49cs.onrender.com/api/resume', resumeData, config);
+    const res = await axios.post(`${CONFIG.API_URL}/api/resume`, resumeData, config);
     dispatch({
       type: CREATE_RESUME_SUCCESS,
       payload: res.data,
@@ -51,7 +52,7 @@ export const updateResume = (id, updatedData) => async (dispatch, getState) => {
       }
     };
 
-    const res = await axios.put(`https://check-49cs.onrender.com/api/resume/${id}`, updatedData, config);
+    const res = await axios.put(`${CONFIG.API_URL}/api/resume/${id}`, updatedData, config);
     dispatch({
       type: UPDATE_RESUME_SUCCESS,
       payload: res.data,
@@ -66,7 +67,7 @@ export const deleteResume = (id) => async (dispatch, getState) => {
   try {
     const { auth: { token } } = getState();
 
-    await axios.delete(`https://check-49cs.onrender.com/api/resume/${id}`, {
+    await axios.delete(`${CONFIG.API_URL}/api/resume/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

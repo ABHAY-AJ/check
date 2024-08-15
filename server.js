@@ -10,11 +10,7 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors({
-    origin: 'http://localhost:5000', // Adjust as necessary
-    methods: 'GET,POST,PUT,DELETE',
-    allowedHeaders: 'Content-Type,Authorization',
-  }));
+app.use(cors());
   
 app.use(express.json());
 
