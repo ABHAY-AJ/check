@@ -1,9 +1,0 @@
-.panel-content {
-    padding: 1rem;
-    max-height: calc(100vh - 150px); 
-    overflow-y: auto; 
-    overflow-x: hidden; 
-    box-sizing: border-box;
-    word-wrap: break-word; 
-  }
- 
